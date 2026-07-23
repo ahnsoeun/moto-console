@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "radix-nova",
+  "style": "radix-vega",
   "rsc": true,
   "tsx": true,
   "tailwind": {
@@ -19,12 +19,14 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "menuColor": "default",
+  "menuColor": "default-translucent",
   "menuAccent": "subtle",
   "registries": {
     "@shadcncraft": {
       "url": "https://shadcncraft.com/r/{style}/{name}",
-      "headers": { "X-License-Key": "${SHADCNCRAFT_LICENSE_KEY}" }
+      "headers": {
+        "X-License-Key": "${SHADCNCRAFT_LICENSE_KEY}"
+      }
     }
   }
 }

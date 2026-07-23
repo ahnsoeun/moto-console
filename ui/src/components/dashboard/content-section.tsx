@@ -8,20 +8,26 @@ const channels = [
     name: "KBingers @K-MUSIC",
     meta: "partner URL 첨부 · 2026-07-20 13:27",
     initials: "KB",
-    status: { label: "붙는 중", variant: "success" as const },
+    status: { label: "정상", variant: "success" as const },
+  },
+  {
+    name: "Simply K-Pop 24/7",
+    meta: "SSAI 연동됨 · 2026-07-20 09:41",
+    initials: "SK",
+    status: { label: "정상", variant: "success" as const },
   },
   {
     name: "Drama Prime @Latam",
     meta: "VAST URL 미등록 · 2026-07-19 18:02",
     initials: "DP",
-    status: { label: "미연동", variant: "destructive" as const },
+    status: { label: "미연동", variant: "danger" as const },
   },
 ]
 
 const adStatus = [
   { name: "KBingers @K-MUSIC", meta: "SSAI 연동됨 · fill 92%", variant: "success" as const, label: "정상" },
   { name: "Simply K-Pop 24/7", meta: "SSAI 연동됨 · fill 88%", variant: "success" as const, label: "정상" },
-  { name: "Drama Prime @Latam", meta: "VAST URL 미등록", variant: "destructive" as const, label: "미연동" },
+  { name: "Drama Prime @Latam", meta: "VAST URL 미등록", variant: "danger" as const, label: "미연동" },
 ]
 
 export function ContentSection() {

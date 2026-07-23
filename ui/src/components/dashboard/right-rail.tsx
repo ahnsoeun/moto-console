@@ -1,4 +1,4 @@
-import { ChevronDown, Sparkles } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -27,7 +27,7 @@ export function RightRail() {
                 <ChevronDown className="text-muted-foreground size-3.5" />
               </div>
               <div className="text-muted-foreground truncate text-xs">
-                spt@its-newid.com
+                soeun@its-newid.com
               </div>
             </div>
           </button>
@@ -37,7 +37,7 @@ export function RightRail() {
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">역할</span>
-              <span className="font-medium">운영자</span>
+              <span className="font-medium">Operator</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">워크스페이스</span>
@@ -45,32 +45,13 @@ export function RightRail() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">담당 채널</span>
-              <span className="font-medium">17</span>
+              <span className="font-medium">32</span>
             </div>
           </div>
 
           <Button variant="outline" className="w-full">
-            워크스페이스 관리
+            계정 관리
           </Button>
-        </CardContent>
-      </Card>
-
-      {/* Promo (dark) */}
-      <Card className="gap-2 border-0 bg-foreground py-4 text-background">
-        <CardContent className="space-y-2 px-4">
-          <div className="flex items-center gap-1.5 text-sm font-semibold">
-            <Sparkles className="size-4" />
-            AI 편성 추천 체험
-          </div>
-          <p className="text-background/70 text-xs leading-relaxed">
-            3분 만에 채널 편성 초안을 자동으로 — 지금 베타 무료 체험
-          </p>
-          <div className="flex items-center justify-between pt-1">
-            <div className="bg-background/20 h-1 w-32 overflow-hidden rounded-full">
-              <div className="bg-background h-full w-[83%] rounded-full" />
-            </div>
-            <span className="text-background/70 text-xs">5 / 6</span>
-          </div>
         </CardContent>
       </Card>
 
@@ -78,7 +59,7 @@ export function RightRail() {
       <div className="space-y-2">
         <div className="flex items-center justify-between px-1">
           <span className="text-sm font-semibold">운영진</span>
-          <Badge variant="secondary">관리</Badge>
+          <Badge variant="grey">관리</Badge>
         </div>
         <div className="flex -space-x-2">
           {team.map((t) => (

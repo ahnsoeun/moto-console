@@ -40,3 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .playwright-mcp/
+
+# 디자인 캡처(대용량 이미지) — 코드 저장소에서 제외
+/PP captures/
+
+# npm 락파일(이 프로젝트는 pnpm 사용) & 로컬 툴링
+/package-lock.json
+/.claude/

@@ -5,6 +5,48 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme static {
+  /* Global palette — SSOT: Figma paro_console_library_v4.0 (Color) */
+  /* grey */
+  --color-grey-90: #1c1c1c;
+  --color-grey-80: #2d2d2e;
+  --color-grey-70: #515152;
+  --color-grey-60: #707071;
+  --color-grey-50: #8e8e90;
+  --color-grey-40: #adadae;
+  --color-grey-30: #cbcbcd;
+  --color-grey-20: #d8d8da;
+  --color-grey-10: #ebebeb;
+  --color-grey-5: #f5f5f5;
+
+  /* blue (600 = Primary, 500 = Secondary state) */
+  --color-blue-100: #e6f1fe;
+  --color-blue-150: #d8e9fd;
+  --color-blue-200: #c7dfff;
+  --color-blue-250: #b2d4ff;
+  --color-blue-300: #94c2fc;
+  --color-blue-400: #62a6fa;
+  --color-blue-500: #2f89f8;
+  --color-blue-600: #0571f7;
+  --color-blue-700: #0460d2;
+  --color-blue-800: #0450af;
+  --color-blue-900: #03408d;
+  --color-blue-1000: #02336f;
+
+  /* red (Danger) */
+  --color-red-100: #fff1f0;
+  --color-red-150: #ffd9d6;
+  --color-red-200: #ffbdb8;
+  --color-red-300: #ffa39e;
+  --color-red-400: #ff7875;
+  --color-red-500: #ff4d4f;
+  --color-red-600: #f5222d;
+  --color-red-700: #cf1322;
+  --color-red-800: #a8071a;
+  --color-red-900: #820014;
+  --color-red-1000: #5c0011;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -26,14 +68,18 @@
   --color-chart-1: var(--chart-1);
   --color-info-foreground: var(--info-foreground);
   --color-info: var(--info);
+  --color-info-subtle: var(--info-subtle);
   --color-warning-foreground: var(--warning-foreground);
   --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
   --color-success-foreground: var(--success-foreground);
   --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-subtle: var(--destructive-subtle);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -56,22 +102,22 @@
 }
 
 /* moto = nid-design-system 값 (grey/blue/red 팔레트, hex). SSOT: its-newid/nid-design-system */
-:root {
-  --background: #ffffff;
-  --foreground: #1c1c1c;          /* grey-90 */
-  --card: #ffffff;
-  --card-foreground: #1c1c1c;
-  --popover: #ffffff;
-  --popover-foreground: #1c1c1c;
-  --primary: #0571f7;             /* blue-600 */
-  --primary-foreground: #ffffff;
-  --secondary: #f5f5f5;           /* grey-5 */
-  --secondary-foreground: #1c1c1c;
-  --muted: #f5f5f5;
-  --muted-foreground: #8e8e90;    /* grey-50 */
-  --accent: #f5f5f5;
-  --accent-foreground: #1c1c1c;
-  --destructive: #f5222d;         /* red-600 */
+:root {          /* grey-90 */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system,
+    "Apple SD Gothic Neo", system-ui, sans-serif;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #0571f7;             /* blue-600 (= badge/chip primary) */
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.967 0.001 286.375);           /* grey-5 */
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);    /* grey-50 */
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);         /* red-600 */
   --destructive-foreground: #ffffff;
   --success: #389e0d;             /* green-700 */
   --success-foreground: #ffffff;
@@ -79,41 +125,101 @@
   --warning-foreground: #ffffff;
   --info: #0571f7;                /* blue-600 (= primary) */
   --info-foreground: #ffffff;
-  --border: #d8d8da;              /* grey-20 */
-  --input: #d8d8da;
-  --ring: #0571f7;                /* blue-600 */
-  --chart-1: #0571f7;             /* blue */
-  --chart-2: #52c41a;             /* green */
-  --chart-3: #faad14;             /* gold */
-  --chart-4: #722ed1;             /* purple */
-  --chart-5: #13c2c2;             /* cyan */
-  --radius: 0.625rem;             /* 10px */
-  --sidebar: #ffffff;
-  --sidebar-foreground: #1c1c1c;
-  --sidebar-primary: #0571f7;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f5f5;
-  --sidebar-accent-foreground: #1c1c1c;
-  --sidebar-border: #d8d8da;
-  --sidebar-ring: #0571f7;
+  /* 상태별 연한 배경(배지용) — 상태색을 배경 위에 섞어 파생. light/dark 자동 대응 */
+  --success-subtle: color-mix(in srgb, var(--success) 12%, var(--background));
+  --warning-subtle: color-mix(in srgb, var(--warning) 14%, var(--background));
+  --info-subtle: color-mix(in srgb, var(--info) 12%, var(--background));
+  --destructive-subtle: color-mix(
+    in srgb,
+    var(--destructive) 12%,
+    var(--background)
+  );
+  --border: oklch(0.922 0 0);              /* grey-20 */
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);                /* blue-600 */
+  --chart-1: oklch(0.828 0.111 230.318);             /* blue */
+  --chart-2: oklch(0.685 0.169 237.323);             /* green */
+  --chart-3: oklch(0.588 0.158 241.966);             /* gold */
+  --chart-4: oklch(0.5 0.134 242.749);             /* purple */
+  --chart-5: oklch(0.443 0.11 240.79);             /* cyan */
+  --radius: 0.875rem;             /* 10px */
+  --sidebar: oklch(0.21 0.03 265);             /* dark navy */
+  --sidebar-foreground: oklch(0.97 0.01 265);
+  --sidebar-primary: oklch(0.72 0.15 255);             /* bright blue accent */
+  --sidebar-primary-foreground: oklch(0.21 0.03 265);
+  --sidebar-accent: oklch(0.33 0.04 265);             /* hover navy */
+  --sidebar-accent-foreground: oklch(0.97 0.01 265);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.72 0.15 255);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+
+  /* Chip (status) — SSOT: Figma paro_console_library / common/chip. fill·stroke·text */
+  --chip-red-fill: #ffdbdb;
+  --chip-red-stroke: #ffc3bd;
+  --chip-red-text: #f46263;
+  --chip-orange-fill: #ffeacc;
+  --chip-orange-stroke: #ffd6a8;
+  --chip-orange-text: #f68855;
+  --chip-yellow-fill: #fef7b9;
+  --chip-yellow-stroke: #ffea70;
+  --chip-yellow-text: #dba00a;
+  --chip-lime-fill: #e9fbc0;
+  --chip-lime-stroke: #d2ef9a;
+  --chip-lime-text: #66b200;
+  --chip-green-fill: #baf8d7;
+  --chip-green-stroke: #91e8ba;
+  --chip-green-text: #15a271;
+  --chip-aqua-fill: #c8f9fe;
+  --chip-aqua-stroke: #84eaf5;
+  --chip-aqua-text: #20a4bc;
+  --chip-blue-fill: #d8e9fd;
+  --chip-blue-stroke: #b2d4ff;
+  --chip-blue-text: #4897f9;
+  --chip-violet-fill: #e7e2fe;
+  --chip-violet-stroke: #d5ccff;
+  --chip-violet-text: #a86ef7;
+  --chip-fuchsia-fill: #f8e0ff;
+  --chip-fuchsia-stroke: #f4c7ff;
+  --chip-fuchsia-text: #cd68e3;
+  --chip-pink-fill: #fce4f1;
+  --chip-pink-stroke: #fccee8;
+  --chip-pink-text: #f967b2;
+  --chip-grey-fill: #ebebeb;
+  --chip-grey-stroke: #d8d8da;
+  --chip-grey-text: #8e8e90;
+
+  /* Badge (solid) — SSOT: Figma paro_console_library / semantic. 글자색은 흰색 */
+  --badge-primary: #0571f7;
+  --badge-secondary: #2f89f8;
+  --badge-info: #0ebadd;
+  --badge-success: #1d9b6f;
+  --badge-teal: #20c997;
+  --badge-warning: #ffb200;
+  --badge-orange: #fd7e14;
+  --badge-danger: #f5222d;
+  --badge-pink: #d63387;
+  --badge-purple: #8b53d5;
+  --badge-dark: #707071;
+  --badge-grey: #adadae;
 }
 
 .dark {
-  --background: #1c1c1c;          /* grey-90 */
-  --foreground: #f5f5f5;          /* grey-5 */
-  --card: #2d2d2e;                /* grey-80 */
-  --card-foreground: #f5f5f5;
-  --popover: #2d2d2e;
-  --popover-foreground: #f5f5f5;
-  --primary: #2f89f8;             /* blue-500 */
-  --primary-foreground: #1c1c1c;
-  --secondary: #2d2d2e;
-  --secondary-foreground: #f5f5f5;
-  --muted: #2d2d2e;
-  --muted-foreground: #adadae;    /* grey-40 */
-  --accent: #2d2d2e;
-  --accent-foreground: #f5f5f5;
-  --destructive: #ff4d4f;         /* red-500 */
+  --background: oklch(0.145 0 0);          /* grey-90 */
+  --foreground: oklch(0.985 0 0);          /* grey-5 */
+  --card: oklch(0.205 0 0);                /* grey-80 */
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #0571f7;             /* 라이트 디폴트와 동일 (blue-600) */
+  --primary-foreground: oklch(0.97 0.014 254.604);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);    /* grey-40 */
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);         /* red-500 */
   --destructive-foreground: #ffffff;
   --success: #73d13d;             /* green-500 */
   --success-foreground: #1c1c1c;
@@ -121,22 +227,22 @@
   --warning-foreground: #1c1c1c;
   --info: #2f89f8;                /* blue-500 (= primary) */
   --info-foreground: #1c1c1c;
-  --border: #515152;              /* grey-70 */
-  --input: #515152;
-  --ring: #8e8e90;                /* grey-50 */
-  --chart-1: #2f89f8;
-  --chart-2: #73d13d;
-  --chart-3: #ffc53d;
-  --chart-4: #9254de;
-  --chart-5: #36cfc9;
-  --sidebar: #1c1c1c;
-  --sidebar-foreground: #f5f5f5;
-  --sidebar-primary: #2f89f8;
-  --sidebar-primary-foreground: #1c1c1c;
-  --sidebar-accent: #2d2d2e;
-  --sidebar-accent-foreground: #f5f5f5;
-  --sidebar-border: #515152;
-  --sidebar-ring: #8e8e90;
+  --border: oklch(1 0 0 / 10%);              /* grey-70 */
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);                /* grey-50 */
+  --chart-1: oklch(0.828 0.111 230.318);
+  --chart-2: oklch(0.685 0.169 237.323);
+  --chart-3: oklch(0.588 0.158 241.966);
+  --chart-4: oklch(0.5 0.134 242.749);
+  --chart-5: oklch(0.443 0.11 240.79);
+  --sidebar: oklch(0.17 0.025 265);             /* deep navy */
+  --sidebar-foreground: oklch(0.97 0.01 265);
+  --sidebar-primary: oklch(0.72 0.15 255);
+  --sidebar-primary-foreground: oklch(0.17 0.025 265);
+  --sidebar-accent: oklch(0.30 0.04 265);
+  --sidebar-accent-foreground: oklch(0.97 0.01 265);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.72 0.15 255);
 }
 
 @layer base {
@@ -149,5 +255,6 @@
   html {
     font-family: "Pretendard Variable", Pretendard, var(--font-sans),
       -apple-system, "Apple SD Gothic Neo", system-ui, sans-serif;
+    @apply font-sans;
   }
 }

@@ -3,7 +3,7 @@ import { CheckCircle2, Circle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { SectionHeading, MoreLink } from "./section-heading"
+import { SectionHeading } from "./section-heading"
 
 type Task = { label: string; done?: boolean }
 type Checklist = { title: string; tasks: Task[] }
@@ -46,7 +46,7 @@ function ChecklistCard({ list }: { list: Checklist }) {
   return (
     <Card className="gap-3">
       <CardHeader className="gap-2">
-        <div className="text-sm font-semibold">{list.title}</div>
+        <div className="text-sm font-semibold text-grey-90">{list.title}</div>
         <div className="text-muted-foreground text-xs">
           {done}/{total}개 완료
         </div>
@@ -79,7 +79,7 @@ function ChecklistCard({ list }: { list: Checklist }) {
 export function SummarySection() {
   return (
     <section className="space-y-3">
-      <SectionHeading emoji="🧩" title="요약" action={<MoreLink>접어두기 ∧</MoreLink>} />
+      <SectionHeading emoji="🧵" title="오늘의 할일" />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {checklists.map((list) => (
           <ChecklistCard key={list.title} list={list} />

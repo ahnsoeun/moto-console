@@ -13,7 +13,7 @@ export function SectionHeading({
 }) {
   return (
     <div className={cn("flex items-center justify-between", className)}>
-      <h2 className="flex items-center gap-2 text-sm font-semibold">
+      <h2 className="flex items-center gap-2 text-base font-semibold">
         {emoji && <span aria-hidden>{emoji}</span>}
         {title}
       </h2>

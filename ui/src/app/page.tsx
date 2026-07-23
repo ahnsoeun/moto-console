@@ -41,7 +41,7 @@ export default function GalleryPage() {
               >
                 <CardHeader className="gap-2">
                   <div className="flex items-center justify-between">
-                    <Badge variant={d.soon ? "secondary" : "success"}>
+                    <Badge variant={d.soon ? "grey" : "success"}>
                       {d.soon ? "준비 중" : d.status}
                     </Badge>
                     {!d.soon && (
