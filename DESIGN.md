@@ -3,7 +3,7 @@
 moto(구 Motoba) — Playout+ FAST 운영 콘솔의 디자인 시스템 문서.
 값의 기준(SSOT)은 개발자 공통 토큰 레포 **`its-newid/nid-design-system`**, 표현/컴포넌트는 **shadcn/ui + shadcncraft** 킷을 리테마해서 사용한다.
 
-_최종 업데이트: 2026-07-20 · 담당: 소은(프론트팀 UX/UI 디자이너)_
+_최종 업데이트: 2026-07-23 · 담당: 소은(프론트팀 UX/UI 디자이너)_
 
 ---
 
@@ -148,7 +148,7 @@ Figma 킷 스케일과 nid가 이미 일치 → 별도 정합 불필요.
 
 ---
 
-## 7. 현재 상태 (2026-07-20)
+## 7. 현재 상태 (2026-07-23)
 
 ### Figma `moto_design_system` — 리테마
 - ✅ 고아 컬렉션(Primitives/Semantic, 미사용) 삭제
@@ -162,7 +162,9 @@ Figma 킷 스케일과 nid가 이미 일치 → 별도 정합 불필요.
 ### Code `moto/ui` (구 `console-ui`, 2026-07-20 폴더명 변경) — **nid 적용 완료**
 - ✅ `globals.css` `:root`/`.dark`를 nid hex 값으로 교체(primary `#0571f7` 등, git 의존성 없이 인라인). success/warning/info/chart 포함, `@theme inline`에 매핑 추가.
 - ✅ Pretendard 웹폰트 CDN import + html font-family 지정.
-- ✅ radix 통합 패키지 기반 shadcn 컴포넌트 추가: button/card/badge(success·warning 변형)/input/separator/table/avatar/progress.
+- ✅ radix 통합 패키지 기반 shadcn 컴포넌트 추가: button/card/badge(success·warning·grey 변형)/**chip**/input/separator/table/avatar/progress.
+- ✅ `/design-system` 페이지 신설 — 토큰·컴포넌트 미리보기(색상·상태색·표면·사이드바·그레이·차트·radius·타이포·버튼·배지·칩·컴포넌트) + **다크모드 토글**(`theme-toggle`). 쇼케이스는 `src/components/design-system/`.
+- ✅ `/library` 페이지 신설 — 콘텐츠 라이브러리(Program/Ingest/Series 등 탭·필터·테이블) 초안.
 - ⬜ (선택) 나중에 `nid-design-system`을 git 의존성으로 붙여 `@import`로 갈아끼우면 값 SSOT 직결 가능. 지금은 인라인 값이 nid와 동일.
 
 **앱 구조 (초안 여러 개용):**
@@ -172,12 +174,15 @@ moto/ui/
 ├─ public/PlayoutPlus.svg   로고(앱에서 렌더)
 └─ src/
    ├─ app/
-   │  ├─ page.tsx           / → UI 초안 갤러리 (src/lib/drafts.ts 목록 기반)
-   │  └─ dashboard/page.tsx /dashboard → Home 관제 대시보드(아임웹 3단 레이아웃)
+   │  ├─ page.tsx               / → UI 초안 갤러리 (src/lib/drafts.ts 목록 기반)
+   │  ├─ dashboard/page.tsx     /dashboard → Home 관제 대시보드(아임웹 3단 레이아웃)
+   │  ├─ library/page.tsx       /library → 콘텐츠 라이브러리(탭·필터·테이블) 초안
+   │  └─ design-system/page.tsx /design-system → 토큰·컴포넌트 미리보기 + 다크토글
    ├─ components/
-   │  ├─ ui/                shadcn 공용
+   │  ├─ ui/                shadcn 공용 (button·card·badge·chip·input·table…)
    │  ├─ layout/            AppShell·Sidebar·Topbar (모든 초안 재사용)
-   │  └─ dashboard/         대시보드 전용 섹션들
+   │  ├─ dashboard/         대시보드 전용 섹션들
+   │  └─ design-system/     DS 페이지 쇼케이스(primitives·*-showcase·theme-toggle)
    └─ lib/drafts.ts         초안 화면 목록(여기에 추가하면 갤러리에 카드 생성)
 ```
 > 새 초안 = `src/app/<name>/page.tsx` 만들고 `AppShell`로 감싼 뒤 `lib/drafts.ts`에 한 줄 추가.
