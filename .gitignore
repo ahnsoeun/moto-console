@@ -19,6 +19,9 @@ pnpm-debug.log*
 **/.env
 **/.env.*
 
+# Vercel (프로젝트 링크 — 로컬 전용)
+.vercel/
+
 # Playwright screenshots
 **/.playwright-mcp/
 
