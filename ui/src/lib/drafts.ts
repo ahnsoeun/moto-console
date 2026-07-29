@@ -21,6 +21,12 @@ export const drafts: Draft[] = [
     status: "초안",
   },
   {
+    title: "Design System · 토큰·컴포넌트",
+    href: "/design-system",
+    description: "색상·상태색·표면·radius·타이포 토큰 + 버튼·배지·칩 미리보기 · 다크모드 토글",
+    status: "작업 중",
+  },
+  {
     title: "Channel · 채널 목록",
     href: "#",
     description: "채널 테이블 · 상태 필터 · 런칭 파이프라인",
