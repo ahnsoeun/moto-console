@@ -15,6 +15,7 @@ import {
   LibraryBig,
   LifeBuoy,
   Megaphone,
+  Palette,
   PanelLeft,
   Radio,
   Send,
@@ -74,6 +75,7 @@ const groups: NavGroup[] = [
     label: "지원",
     items: [
       { label: "운영 가이드", icon: BookOpen, caret: true },
+      { label: "디자인 시스템", icon: Palette, href: "/design-system" },
       { label: "고객지원", icon: LifeBuoy },
     ],
   },
